@@ -39,14 +39,15 @@ if [ -n "$VS_MAJOR" ] ; then
     export LDFLAGS="$LDFLAGS -L$platlibs"
 fi
 
-set -x
 export PKG_CONFIG_LIBDIR=$uprefix/lib:$uprefix/share
 export PKG_CONFIG_PATH=$uprefix/lib/pkgconfig:$uprefix/share/pkgconfig
+export LDFLAGS="$LDFLAGS -L$uprefix/include"
+export CPPFLAGS="$LDFLAGS -I$uprefix/include"
+
 configure_args=(
     --prefix=$mprefix
     --disable-dependency-tracking
     --disable-silent-rules
-    --with-zlib="${PREFIX}"
 )
 
 # Unix domain sockets aren't gonna work on Windows
