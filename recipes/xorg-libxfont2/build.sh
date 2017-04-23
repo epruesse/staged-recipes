@@ -39,22 +39,22 @@ if [ -n "$VS_MAJOR" ] ; then
     export LDFLAGS="$LDFLAGS -L$platlibs"
 fi
 
-set -x
 export PKG_CONFIG_LIBDIR=$uprefix/lib:$uprefix/share
 export PKG_CONFIG_PATH=$uprefix/lib/pkgconfig:$uprefix/share/pkgconfig
+export LDFLAGS="$LDFLAGS -L$uprefix/lib"
+export CPPFLAGS="$LDFLAGS -I$uprefix/include"
+
 configure_args=(
     --prefix=$mprefix
     --disable-dependency-tracking
-    --disable-selective-werror
     --disable-silent-rules
-    --disable-glx
 )
 
 # Unix domain sockets aren't gonna work on Windows
 if [ -n "$VS_MAJOR" ] ; then
     configure_args+=(--disable-unix-transport)
 fi
-./configure "${configure_args[@]}" || sh
+./configure "${configure_args[@]}" || cat config.log
 make -j$CPU_COUNT
 make install
 make check
