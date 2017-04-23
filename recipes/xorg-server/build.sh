@@ -58,6 +58,7 @@ configure_args=(
     --with-sha1=CommonCrypto
     --disable-dri2
     --disable-dri3
+    --disable-libdrm
 )
 
 # Unix domain sockets aren't gonna work on Windows
