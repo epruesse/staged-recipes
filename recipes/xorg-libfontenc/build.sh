@@ -41,7 +41,7 @@ fi
 
 export PKG_CONFIG_LIBDIR=$uprefix/lib:$uprefix/share
 export PKG_CONFIG_PATH=$uprefix/lib/pkgconfig:$uprefix/share/pkgconfig
-export LDFLAGS="$LDFLAGS -L$uprefix/include"
+export LDFLAGS="$LDFLAGS -L$uprefix/lib"
 export CPPFLAGS="$LDFLAGS -I$uprefix/include"
 
 configure_args=(
