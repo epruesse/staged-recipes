@@ -46,6 +46,7 @@ configure_args=(
     --prefix=$mprefix
     --disable-dependency-tracking
     --disable-silent-rules
+    --with-zlib="${PREFIX}"
 )
 
 # Unix domain sockets aren't gonna work on Windows
