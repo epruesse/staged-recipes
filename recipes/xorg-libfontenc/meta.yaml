@@ -37,7 +37,7 @@ requirements:
     - vc 14                        # [win and py>=35]
     - xorg-util-macros
     - xorg-xproto
-    - zlib zlib 1.2.*
+    - zlib 1.2.*
     # needed for autoreconf:
     - xorg-font-util               # [win]
   run:
