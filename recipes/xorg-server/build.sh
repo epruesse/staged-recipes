@@ -74,6 +74,9 @@ else
     ### Linux
     # package "dri" missing
     configure_args+=(--disable-dri)
+    # actual xorg xserver needs root, no use in conda
+    # we only want xnest, xdmx, xvfb and xwayland
+    configure_args+=(--disable-xorg)
 fi
 
 ./configure "${configure_args[@]}" || sh
