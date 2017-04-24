@@ -51,9 +51,16 @@ configure_args=(
     --with-bzip2
 )
 
+
 # Unix domain sockets aren't gonna work on Windows
 if [ -n "$VS_MAJOR" ] ; then
     configure_args+=(--disable-unix-transport)
+
+    # Debug can't find freetype2
+    pkg-config --list-all || true
+    ls $uprefix/lib/pkgconfig || true
+    ls $uprefix/share/pkgconfig || true
+    pkg-config --modversion freetype2 --debug || true
 fi
 
 ./configure "${configure_args[@]}" || cat config.log
