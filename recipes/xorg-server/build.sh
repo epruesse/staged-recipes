@@ -55,7 +55,7 @@ configure_args=(
     --without-fop
     --without-xmlto
     --disable-devel-docs
-    --with-sha1=CommonCrypto
+#    --with-sha1=CommonCrypto
     --disable-dri2
     --disable-dri3
     --disable-libdrm
