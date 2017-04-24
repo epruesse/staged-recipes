@@ -1,0 +1,53 @@
+{% set xorg_name = "libWindowsWM" %}
+{% set xorg_category = "lib" %}
+{% set name = "xorg-" ~ xorg_name %}
+{% set version = "1.0.1" %}
+{% set sha256 = "25f07cf847cbe91d36c20f348b4b9494c4504fe02966e8cdf65cf56316a70edc" %}
+{% set am_version = "1.15" %} # keep synchronized with build.sh
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.bz2
+  url: https://www.x.org/releases/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.bz2
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  skip: True  # [not osx]
+
+requirements:
+  build:
+    - pkg-config
+    - toolchain
+    - xorg-util-macros
+    - xorg-windowswmproto
+    - xorg-libx11
+    - xorg-xextproto
+    - xorg-libxext
+    - pthread-stubs
+    - xorg-libxcb
+
+  run:
+    - xorg-libx11
+    - xorg-libxext
+    - xorg-libxcb
+
+test:
+  commands:
+    - conda inspect linkages -p $PREFIX $PKG_NAME
+    - conda inspect objects -p $PREFIX $PKG_NAME
+
+about:
+  home: https://www.x.org/
+  license: MIT
+  license_family: MIT
+  license_file: COPYING
+  summary: 'WindowsWM - Cygwin/X rootless window management extension.'
+
+extra:
+  recipe-maintainers:
+    - epruesse
+    - pkgw
