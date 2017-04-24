@@ -36,7 +36,7 @@ requirements:
     - vc 10                    # [win and py34]
     - vc 14                    # [win and py>=35]
     - xorg-util-macros
-    - mesalib
+    - mesalib                  # [not win]
     - xorg-applewmproto        # [osx]
     - xorg-compositeproto      # [linux]
     - xorg-xf86driproto        # [linux]
