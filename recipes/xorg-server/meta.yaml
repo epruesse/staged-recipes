@@ -63,7 +63,10 @@ requirements:
     - xorg-libxfont2
     - xorg-libxkbfile
     - xorg-libxfixes
+    # applewm only useful on apple:
     - xorg-libapplewm  # [osx]
+    # using CommonCrypto on osx, openssl on others:
+    - openssl 1.0.* # [not osx]
   run:
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
@@ -74,6 +77,7 @@ requirements:
     - xorg-libxkbfile
     - xorg-libxfixes
     - xorg-libapplewm  # [osx]
+    - openssl 1.0.* # [not osx]
 
 test:
   commands:
