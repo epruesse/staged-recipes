@@ -55,6 +55,9 @@ configure_args=(
 # Unix domain sockets aren't gonna work on Windows
 if [ -n "$VS_MAJOR" ] ; then
     configure_args+=(--disable-unix-transport)
+    # Neither freetype-config nor freetype.pc in win freetype pkg
+    # disable freetype until fix available:
+    configure_args+=(--disble-freetype)
 
     # Debug can't find freetype2
     pkg-config --list-all || true
