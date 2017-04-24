@@ -1,4 +1,4 @@
-{% set xorg_name = "libfontenc" %}
+{% set xorg_name = "libpciaccess" %}
 {% set xorg_category = "lib" %}
 {% set name = "xorg-" ~ xorg_name %}
 {% set version = "0.13.5" %}
