@@ -55,16 +55,24 @@ configure_args=(
     --without-fop
     --without-xmlto
     --disable-devel-docs
-#    --with-sha1=CommonCrypto
     --disable-dri2
     --disable-dri3
     --disable-libdrm
 )
 
-# Unix domain sockets aren't gonna work on Windows
 if [ -n "$VS_MAJOR" ] ; then
+    ### Windows
+    # Unix domain sockets aren't gonna work on Windows
     configure_args+=(--disable-unix-transport)
+elif [ x"`uname`" = x"Darwin" ]; then
+    ### OSX
+    # Use CommonCrypto on OSX
+    configure_args+=(--with-sha1=CommonCrypto)
+else
+    ### Linux
+    :
 fi
+
 ./configure "${configure_args[@]}" || sh
 make -j$CPU_COUNT
 make install
