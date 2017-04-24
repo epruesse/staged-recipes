@@ -70,7 +70,8 @@ elif [ x"`uname`" = x"Darwin" ]; then
     configure_args+=(--with-sha1=CommonCrypto)
 else
     ### Linux
-    :
+    # package "dri" missing
+    configure_args+=(--disable-dri)
 fi
 
 ./configure "${configure_args[@]}" || sh
