@@ -17,38 +17,40 @@ source:
 build:
   number: 0
   features:
-    - vc9  # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py>=35]
+    - vc9                          # [win and py27]
+    - vc10                         # [win and py34]
+    - vc14                         # [win and py>=35]
 
 requirements:
   build:
-    - m2-autoconf  # [win]
+    - m2-autoconf                  # [win]
     - m2-automake{{ am_version }}  # [win]
-    - m2-libtool  # [win]
-    - m2w64-pkg-config  # [win]
-    - m2w64-toolchain  # [win]
-    - pkg-config  # [not win]
-    - posix  # [win]
-    - python  # [win]
+    - m2-libtool                   # [win]
+    - m2w64-pkg-config             # [win]
+    - m2w64-toolchain              # [win]
+    - pkg-config                   # [not win]
+    - posix                        # [win]
+    - python                       # [win]
     - toolchain
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
+    - vc 9                         # [win and py27]
+    - vc 10                        # [win and py34]
+    - vc 14                        # [win and py>=35]
     - xorg-util-macros
     - xorg-xproto
     - xorg-xtrans
     - xorg-fontsproto
     - xorg-libfontenc
-    - freetype
-    - zlib
+    - freetype 2.7|2.7.*
+    - zlib 1.2.*
+    - bzip2 1.0.*
   run:
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
+    - vc 9                         # [win and py27]
+    - vc 10                        # [win and py34]
+    - vc 14                        # [win and py>=35]
     - xorg-libfontenc
-    - freetype
-    - zlib
+    - freetype 2.7|2.7.*
+    - zlib 1.2.*
+    - bzip2 1.0.*
 
 test:
   commands:
@@ -60,7 +62,13 @@ about:
   license: MIT
   license_family: MIT
   license_file: COPYING
-  summary: 'The X.org X server'
+  summary: |
+    libXfont provides the core of the legacy X11 font system, handling the
+    index files (fonts.dir, fonts.alias, fonts.scale), the various font file
+    formats, and rasterizing them.   It is used by the X servers, the
+    X Font Server (xfs), and some font utilities (bdftopcf for instance),
+    but should not be used by normal X11 clients.  X11 clients access fonts
+    via either the new API's in libXft, or the legacy API's in libX11.
 
 extra:
   recipe-maintainers:

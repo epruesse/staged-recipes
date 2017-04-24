@@ -48,12 +48,14 @@ configure_args=(
     --prefix=$mprefix
     --disable-dependency-tracking
     --disable-silent-rules
+    --with-bzip2
 )
 
 # Unix domain sockets aren't gonna work on Windows
 if [ -n "$VS_MAJOR" ] ; then
     configure_args+=(--disable-unix-transport)
 fi
+
 ./configure "${configure_args[@]}" || cat config.log
 make -j$CPU_COUNT
 make install
