@@ -1,6 +1,6 @@
 #! /bin/bash
 
-#set -e
+set -e
 IFS=$' \t\n' # workaround for conda 4.2.13+toolchain bug
 
 # Adopt a Unix-friendly path if we're on Windows (see bld.bat).
@@ -39,21 +39,14 @@ if [ -n "$VS_MAJOR" ] ; then
     export LDFLAGS="$LDFLAGS -L$platlibs"
 fi
 
-set -x
 export PKG_CONFIG_LIBDIR=$uprefix/lib:$uprefix/share
 export PKG_CONFIG_PATH=$uprefix/lib/pkgconfig:$uprefix/share/pkgconfig
 configure_args=(
     --prefix=$mprefix
     --disable-dependency-tracking
-    --disable-selective-werror
     --disable-silent-rules
-    --disable-glx
 )
 
-# Unix domain sockets aren't gonna work on Windows
-if [ -n "$VS_MAJOR" ] ; then
-    configure_args+=(--disable-unix-transport)
-fi
 ./configure "${configure_args[@]}" || sh
 make -j$CPU_COUNT
 make install
