@@ -64,6 +64,8 @@ if [ -n "$VS_MAJOR" ] ; then
     ### Windows
     # Unix domain sockets aren't gonna work on Windows
     configure_args+=(--disable-unix-transport)
+    # Enable WindowsWM
+    configure_args+=(--enable-windowswm)
 elif [ x"`uname`" = x"Darwin" ]; then
     ### OSX
     # Use CommonCrypto on OSX

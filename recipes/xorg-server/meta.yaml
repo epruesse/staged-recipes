@@ -38,6 +38,9 @@ requirements:
     - xorg-util-macros
     - mesalib                  # [not win]
     - xorg-applewmproto        # [osx]
+    - xorg-libapplewm          # [osx]
+    - xorg-windowswmproto      # [win]
+    - xorg-libwindowswm        # [win]
     - xorg-compositeproto      # [linux]
     - xorg-xf86driproto        # [linux]
     - xorg-bigreqsproto
@@ -65,8 +68,6 @@ requirements:
     - xorg-libxfont2
     - xorg-libxkbfile
     - xorg-libxfixes
-    # applewm only useful on apple:
-    - xorg-libapplewm  # [osx]
     # using CommonCrypto on osx, openssl on others:
     - openssl 1.0.* # [not osx]
   run:
@@ -79,6 +80,7 @@ requirements:
     - xorg-libxkbfile
     - xorg-libxfixes
     - xorg-libapplewm  # [osx]
+    - xorg-libwindowswm  # [win]
     - openssl 1.0.* # [not osx]
 
 test:
