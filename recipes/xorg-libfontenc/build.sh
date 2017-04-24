@@ -47,6 +47,7 @@ export CPPFLAGS="$LDFLAGS -I$uprefix/include"
 configure_args=(
     --prefix=$mprefix
     --disable-dependency-tracking
+    --disable-selective-werror
     --disable-silent-rules
 )
 

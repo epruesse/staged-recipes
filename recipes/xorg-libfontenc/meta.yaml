@@ -53,7 +53,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: COPYING
-  summary: 'font encoding library'
+  summary: 'Library to handle config files for XKB (X11 keyboard config extension)'
 
 extra:
   recipe-maintainers:
