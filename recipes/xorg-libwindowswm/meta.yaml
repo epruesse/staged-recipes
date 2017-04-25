@@ -16,10 +16,25 @@ source:
 
 build:
   number: 0
+  features:
+    - vc9  # [win and py27]
+    - vc10  # [win and py34]
+    - vc14  # [win and py>=35]
 
 requirements:
   build:
-    - pkg-config
+    - toolchain
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
+    - m2-autoconf  # [win]
+    - m2-automake{{ am_version }}  # [win]
+    - m2-libtool  # [win]
+    - m2w64-pkg-config  # [win]
+    - m2w64-toolchain  # [win]
+    - pkg-config  # [not win]
+    - posix  # [win]
+    - python  # [win]
     - toolchain
     - xorg-util-macros
     - xorg-windowswmproto
@@ -30,6 +45,9 @@ requirements:
     - xorg-libxcb
 
   run:
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
     - xorg-libx11
     - xorg-libxext
     - xorg-libxcb
