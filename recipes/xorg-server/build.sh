@@ -79,7 +79,7 @@ else
     configure_args+=(--disable-xorg)
 fi
 
-./configure "${configure_args[@]}" || sh
+./configure "${configure_args[@]}" || cat config.log
 make -j$CPU_COUNT
 make install
 make check
